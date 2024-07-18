@@ -13,8 +13,10 @@ gitpush: ## git push m=any message
 	git add .; git commit -m "$(m)"; git push;
 
 rebuild: ## rebuild apache
+	clear
 	docker-compose down
-	docker-compose up -d
+	docker-compose -f docker-compose.yml up -d --build --remove-orphans
+	docker ps
 
 destroy-all: ## destroy container and image
 	docker-compose down --rmi all
