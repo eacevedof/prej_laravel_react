@@ -3,7 +3,7 @@ version: "3.8"
 services:
   apache:
     build:
-      context: ./apache
+      context: ./docker/apache
     hostname: lr-apache
     container_name: cont-lr-apache
     ports:

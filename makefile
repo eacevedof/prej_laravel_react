@@ -20,7 +20,7 @@ destroy-all: ## destroy container and image
 	docker-compose down --rmi all
 
 ssh-apache: ## connect to container
-	docker exec -it --user root cont-apache bash
+	docker exec -it --user root cont-lr-apache bash
 
 start:  ## start container
 	docker-compose start
