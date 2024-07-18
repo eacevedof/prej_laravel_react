@@ -2,3 +2,4 @@
 .vscode
 
 apache/www/lr-app/*
+**/.DS_Store
