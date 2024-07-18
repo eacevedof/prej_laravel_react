@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  apache:
+    build:
+      context: ./apache
+    hostname: lr-apache
+    container_name: cont-lr-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./laravel:/var/www/html
+
+networks:
+  default:
+    # this network is related to a main container with mariadb and all my databases
+    # in this way I avoid creating a db container for each project check this file for more info:
+    # prj_docker_imgs/mariadb-univ/docker-compose.yml
+    name: mariadb-univ_net
+    external: true
