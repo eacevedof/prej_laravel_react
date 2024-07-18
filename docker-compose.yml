@@ -9,7 +9,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./laravel:/var/www/html
+      - ./www:/var/www
 
 networks:
   default:

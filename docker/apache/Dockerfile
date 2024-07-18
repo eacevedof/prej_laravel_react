@@ -25,7 +25,12 @@ RUN rm /tmp/composer-setup.php
 # Verify Composer installation
 RUN composer --version
 
-# Verify Composer installation
-RUN composer --version
+# Copy virtual host files
+COPY ./vhosts/lr-app.conf /etc/apache2/sites-available/lr-app.conf
+# Enable the virtual hosts
+RUN a2ensite lr-app.conf
 
 RUN a2enmod rewrite
+
+# Restart Apache to apply changes (Docker will do this at container start)
+CMD ["apache2-foreground"]
