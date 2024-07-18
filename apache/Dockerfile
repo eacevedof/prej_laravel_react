@@ -26,7 +26,7 @@ RUN rm /tmp/composer-setup.php
 RUN composer --version
 
 # Copy virtual host files
-COPY ./vhosts/lr-app.conf /etc/apache2/sites-available/lr-app.conf
+COPY vhosts/lr-app.conf /etc/apache2/sites-available/lr-app.conf
 # Enable the virtual hosts
 RUN a2ensite lr-app.conf
 

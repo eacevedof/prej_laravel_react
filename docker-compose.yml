@@ -3,13 +3,15 @@ version: "3.8"
 services:
   apache:
     build:
-      context: ./docker/apache
+      context: apache
     hostname: lr-apache
     container_name: cont-lr-apache
     ports:
       - "8080:80"
+      - "8090:90"
     volumes:
-      - ./www:/var/www
+      - ./apache/vhosts:/etc/apache2/sites-available
+      - ./apache/www:/var/www
 
 networks:
   default:
