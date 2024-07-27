@@ -1,5 +1,9 @@
 .idea
 .vscode
 
-apache/www/lr-app/*
 **/.DS_Store
+
+apache/www/lr-app/*
+mariadb/initdb
+mariadb/mysql
+

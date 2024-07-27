@@ -2,10 +2,10 @@ version: "3.8"
 
 services:
   apache:
-    build:
-      context: apache
-    hostname: lr-apache
+    build: ./apache
     container_name: cont-lr-apache
+    hostname: lr-apache
+
     ports:
       - "8080:8080"
       - "8090:8090"
@@ -13,6 +13,22 @@ services:
       - ./apache/vhosts:/etc/apache2/sites-available
       - ./apache/www:/var/www
 
+  mariadb:
+    build: ./mariadb
+    container_name: cont-lr-mariadb
+    hostname: lr-mariadb
+
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+
+    volumes:
+      # .env.DB_FOLDER=/Users/ioedu/projects/db_mariadb
+      - ./mariadb/initdb:/docker-entrypoint-initdb.d/
+      - ./mariadb/mysql:/var/lib/mysql
+
+    ports:
+      - "3308:3306"
 networks:
   default:
     # this network is related to a main container with mariadb and all my databases
