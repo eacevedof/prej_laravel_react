@@ -24,8 +24,15 @@ destroy-all: ## destroy container and image
 ssh-apache: ## connect to container
 	docker exec -it --user root cont-lr-apache bash
 
+ssh-mariadb: ## connect to container
+	docker exec -it --user root cont-lr-mariadb bash
+
 start:  ## start container
 	docker-compose start
 
 stop:   ## stop it
 	docker-compose stop
+	
+artisan-migrate: ## artisan-migrate t=oqotech
+	clear;
+	docker exec -it cont-lr-apache sh -c "cd /var/www/lr-app && php artisan cache:clear && php artisan migrate --force"
